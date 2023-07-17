@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   Text,
   View,
@@ -6,31 +6,34 @@ import {
   SafeAreaView,
   Platform,
   StatusBar,
-} from 'react-native';
-import Constants from 'expo-constants';
-import { colours } from './src/utils/colours';
-import { Focus } from './src/features/focus';
-import { Timer } from './src/features/Timer';
-import { FocusHistory } from './src/features/FocusHistory';
+} from "react-native";
+import Constants from "expo-constants";
+import { colours } from "./src/utils/colours";
+import { Focus } from "./src/features/focus";
+import { Timer } from "./src/features/Timer";
+import { FocusHistory } from "./src/features/FocusHistory";
 
 export default function App() {
   // Remember to change 'test' to null for app to operate correctly
+
+  // Hey github
+
   const [currentSubject, setCurrentSubject] = useState(null);
   const [history, setHistory] = useState([]);
   return (
     <SafeAreaView style={styles.container}>
       {!currentSubject ? (
         <>
-          <Focus addSubject={setCurrentSubject}/>
-          <FocusHistory history={history}/>
+          <Focus addSubject={setCurrentSubject} />
+          <FocusHistory history={history} />
         </>
       ) : (
-        <Timer 
-        focusSubject={currentSubject}
-        onTimerEnd={(subject) => {
-          setHistory([...history, subject])
-        }}
-        clearSubject={() => setCurrentSubject(null)}
+        <Timer
+          focusSubject={currentSubject}
+          onTimerEnd={(subject) => {
+            setHistory([...history, subject]);
+          }}
+          clearSubject={() => setCurrentSubject(null)}
         />
       )}
     </SafeAreaView>
@@ -40,7 +43,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
+    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
     backgroundColor: colours.background,
   },
 });
